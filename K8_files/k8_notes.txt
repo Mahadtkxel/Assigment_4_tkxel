@@ -1,0 +1,36 @@
+K8 components:
+each pod gets own IP address.
+new IP is assigned each time a POD is recreated.
+
+Service:
+- Service component is used for static IP.
+- also acts as a loadbalancer and forwards request to the pod that is least busy.
+
+configMap:
+external configuration of your application
+
+Secret:
+base64 encoded.
+
+Worker Node processes:
+3 Node processes
+1) Kubelet
+2) kube proxy
+3) Container Runtime
+
+Master nodes:
+4 processes
+1) api-server
+it is the cluster gateway.
+
+2) Scheduler
+It just decides on which Node new Pod should be scheduled
+kubelet actually makes the pods
+
+3) Controller Manager
+Detect state changes
+
+4) Etcd
+A key:value store. DB/brain of k8. stores state information.
+does not store the actual application data.
+
