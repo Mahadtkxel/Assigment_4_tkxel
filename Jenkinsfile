@@ -10,7 +10,7 @@ pipeline {
     }
     
     stages {
-        stage("Run ${params.IMAGE_1} container") {
+        stage("Run Node container") {
             steps {
                 sh """
                     docker container run --name node_container --rm -d ${params.IMAGE_1}:${params.IMAGE_1_VERSION}
@@ -19,14 +19,14 @@ pipeline {
             }
         }
 
-        // stage("Run ${params.IMAGE_2} container") {
-        //     steps {
-        //         sh """
-        //             docker run -it --rm --name my-maven-project -v $(pwd):/usr/src/mymaven -w /usr/src/mymaven ${params.IMAGE_2}:${params.IMAGE_2_TAG} mvn clean install
-        //             echo ${params.IMAGE_2}:${params.IMAGE_2_TAG} ${params.USER_NAME}
-        //         """
-        //     }
-        // }
+        stage("Run Maven container") {
+            steps {
+                sh """
+                    docker run -it --rm --name my-maven-project -v $(pwd):/usr/src/mymaven -w /usr/src/mymaven ${params.IMAGE_2}:${params.IMAGE_2_TAG} mvn clean install
+                    echo ${params.IMAGE_2}:${params.IMAGE_2_TAG} ${params.USER_NAME}
+                """
+            }
+        }
        
     }
 }
