@@ -6,7 +6,7 @@ pipeline {
         string(name: "IMAGE_1",  defaultValue: "node")
         string(name: "IMAGE_1_TAG", defaultValue: "18-alpine")
         string(name: "IMAGE_2",  defaultValue: "maven")
-        string(name: "IMAGE_2_TAG", defaultValue: "3.3-jdk-17")
+        string(name: "IMAGE_2_TAG", defaultValue: "eclipse-temurin-11-alpine")
     }
     
     stages {
