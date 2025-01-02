@@ -22,7 +22,14 @@ pipeline {
         stage("Run Maven container") {
             steps {
                 sh """
-                    docker run --rm --name my-maven-project -v "\$(pwd)":/usr/src/mymaven -w /usr/src/mymaven ${params.IMAGE_2}:${params.IMAGE_2_TAG}  mvn archetype:generate
+                    docker run --rm --name my-maven-project -v "\$(pwd)":/usr/src/mymaven -w /usr/src/mymaven ${params.IMAGE_2}:${params.IMAGE_2_TAG}  mvn archetype:generate -B 
+                        -DarchetypeGroupId=org.apache.maven.archetypes 
+                        -DarchetypeArtifactId=maven-archetype-quickstart 
+                        -DarchetypeVersion=1.1 
+                        -DgroupId=com.company 
+                        -DartifactId=project 
+                        -Dversion=1.0-SNAPSHOT 
+                        -Dpackage=com.company.project
                     echo ${params.IMAGE_2}:${params.IMAGE_2_TAG} ${params.USER_NAME}
                 """
             }
