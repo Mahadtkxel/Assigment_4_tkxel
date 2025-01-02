@@ -22,7 +22,7 @@ pipeline {
         stage("Run Maven container") {
             steps {
                 sh """
-                    docker run --rm --name my-maven-project -v "\$(pwd)":/usr/src/mymaven -w /usr/src/mymaven ${params.IMAGE_2}:${params.IMAGE_2_TAG}  mvn org.apache.maven.plugins:maven-archetype-plugin:2.4:generate
+                    docker run -it --rm -v $(pwd)/my-project:/usr/src/mymaven -w /usr/src/mymaven maven mvn clean install
                     echo ${params.IMAGE_2}:${params.IMAGE_2_TAG} ${params.USER_NAME}
                 """
             }
