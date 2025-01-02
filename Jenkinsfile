@@ -13,7 +13,7 @@ pipeline {
         stage("Run Node container") {
             steps {
                 sh """
-                    docker container run --name node_container --rm -d ${params.IMAGE_1}:${params.IMAGE_1_VERSION}
+                    docker container run --name node_container --rm -d ${params.IMAGE_1}:${params.IMAGE_1_TAG}
                     echo ${params.IMAGE_1}:${params.IMAGE_1_TAG} ${params.USER_NAME}
                 """
             }
