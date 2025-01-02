@@ -22,7 +22,7 @@ pipeline {
         stage("Run Maven container") {
             steps {
                 sh """
-                    docker run --rm --name my-maven-project -v "\$(pwd)":/usr/src/mymaven -w /usr/src/mymaven ${params.IMAGE_2}:${params.IMAGE_2_TAG}  mvn compiler:compile
+                    docker run --rm --name my-maven-project -v "\$(pwd)":/usr/src/mymaven -w /usr/src/mymaven ${params.IMAGE_2}:${params.IMAGE_2_TAG}  mvn archetype:generate
                     echo ${params.IMAGE_2}:${params.IMAGE_2_TAG} ${params.USER_NAME}
                 """
             }
