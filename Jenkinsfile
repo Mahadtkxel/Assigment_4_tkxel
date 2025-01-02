@@ -6,7 +6,7 @@ pipeline {
         string(name: "IMAGE_1",  defaultValue: "node")
         string(name: "IMAGE_1_TAG", defaultValue: "18-alpine")
         string(name: "IMAGE_2",  defaultValue: "maven")
-        string(name: "IMAGE_2_TAG", defaultValue: "maven:3.3-jdk-17")
+        string(name: "IMAGE_2_TAG", defaultValue: "3.3-jdk-17")
     }
     
     stages {
@@ -22,7 +22,7 @@ pipeline {
         stage("Run Maven container") {
             steps {
                 sh """
-                    docker run --name my-maven-project -v "\$(pwd)":/usr/src/mymaven -w /usr/src/mymaven ${params.IMAGE_2}:${params.IMAGE_2_TAG}  mvn verify
+                    docker run --rm --name my-maven-project -v "\$(pwd)":/usr/src/mymaven -w /usr/src/mymaven ${params.IMAGE_2}:${params.IMAGE_2_TAG}  mvn verify
                     echo ${params.IMAGE_2}:${params.IMAGE_2_TAG} ${params.USER_NAME}
                 """
             }
