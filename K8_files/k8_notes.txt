@@ -58,7 +58,7 @@ K8 ingress:
 To enable ingress routing we first need to have an ingress controller pod which communicates with ingress service. On cloud, a cloud native loadbalancer is in front
 of the ingress controller pod.
 
-
+after writing dashboard ingress, go to /etc/hosts file and add IP to match the domain name.
 
 
 
